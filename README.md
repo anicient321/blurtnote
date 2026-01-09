@@ -13,24 +13,21 @@ BlurtNote is a minimal note-taking app designed for speed. Capture fleeting thou
 - Fast thought capture
 
 ## Compilation & installation
+You can also use the pre-build binaries for both platforms from the Releases tab.
 
 ### Windows
 ```bash
-# Placeholder - build instructions
-git clone https://github.com/username/blurtnote.git
+git clone https://github.com/anicient321/blurtnote.git
 cd blurtnote
-# Run build script
 build.bat
+install.bat
 ```
 
 ### Linux
 ```bash
-# Placeholder - build instructions
-git clone https://github.com/username/blurtnote.git
+git clone https://github.com/anicient321/blurtnote.git
 cd blurtnote
-# Compile
 make
-# Install
 sudo make install
 ```
 
@@ -39,5 +36,4 @@ sudo make install
 blurtnote
 ```
 
-## License
-GPL2.0, refer to LICENSES\GPL2.0
+## LicensGPL2.0, refer to LICENSES\GPL2.0
