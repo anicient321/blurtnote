@@ -36,4 +36,5 @@ sudo make install
 blurtnote
 ```
 
-## LicensGPL2.0, refer to LICENSES\GPL2.0
+## License
+GPL2.0, refer to LICENSES\GPL2.0
