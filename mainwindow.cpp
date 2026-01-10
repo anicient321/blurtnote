@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "thememanager.h"
-#include "documentManager.h"
+#include "DocumentManager.h"
 
 #include <QFileDialog>
 #include <QFileInfo>
