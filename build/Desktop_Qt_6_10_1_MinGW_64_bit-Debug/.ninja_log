@@ -1,0 +1,91 @@
+# ninja log v6
+43	230	7897643770061907	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+43	230	7897643770061907	BlurtNote2_autogen/timestamp	c48fe16832611a93
+43	230	7897643770061907	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+933	5479	7897626092454829	CMakeFiles/BlurtNote2.dir/themeManager.cpp.obj	143f3f5a84dd94b5
+43	230	7897643770061907	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+924	5315	7897626092366044	CMakeFiles/BlurtNote2.dir/BlurtNote2_autogen/mocs_compilation.cpp.obj	d87fc82a196fe9c
+231	5153	7897643771934926	CMakeFiles/BlurtNote2.dir/main.cpp.obj	813fc24986a28d4
+235	4401	7897643771979960	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+5153	5483	7897643821156709	BlurtNote2.exe	d3d673be18e55f48
+27	785	7897645673658114	build.ninja	2d4e75eb83f9c07
+204	246	7897643408956723	qrc_resources.cpp	dce414c02da09034
+204	246	7897643408956723	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/qrc_resources.cpp	dce414c02da09034
+5	744	7897645673658114	build.ninja	2d4e75eb83f9c07
+31	187	7897645674926352	BlurtNote2_autogen/timestamp	c48fe16832611a93
+31	187	7897645674926352	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+31	187	7897645674926352	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+31	187	7897645674926352	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+191	3771	7897645676517137	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+188	4410	7897645676487244	CMakeFiles/BlurtNote2.dir/main.cpp.obj	813fc24986a28d4
+4411	4722	7897645718722325	BlurtNote2.exe	d3d673be18e55f48
+30	198	7897674161584626	BlurtNote2_autogen/timestamp	c48fe16832611a93
+30	198	7897674161584626	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+30	198	7897674161584626	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+30	198	7897674161584626	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+199	4696	7897674163264954	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+34	240	7897674351622038	BlurtNote2_autogen/timestamp	c48fe16832611a93
+34	240	7897674351622038	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+34	240	7897674351622038	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+34	240	7897674351622038	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+241	4702	7897674353696203	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+245	4905	7897674353731239	CMakeFiles/BlurtNote2.dir/themeManager.cpp.obj	143f3f5a84dd94b5
+4905	5260	7897674400331584	BlurtNote2.exe	d3d673be18e55f48
+11	751	7897679295641146	BlurtNote2_autogen/timestamp	c48fe16832611a93
+11	751	7897679295641146	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+11	751	7897679295641146	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+11	751	7897679295641146	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+752	6176	7897679296562512	CMakeFiles/BlurtNote2.dir/BlurtNote2_autogen/mocs_compilation.cpp.obj	d87fc82a196fe9c
+759	6179	7897679296638335	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+764	6310	7897679296683390	CMakeFiles/BlurtNote2.dir/themeManager.cpp.obj	143f3f5a84dd94b5
+50	276	7897680037565681	BlurtNote2_autogen/timestamp	c48fe16832611a93
+50	276	7897680037565681	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+50	276	7897680037565681	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+50	276	7897680037565681	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+282	4696	7897680039891386	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+278	5344	7897680039841551	CMakeFiles/BlurtNote2.dir/main.cpp.obj	813fc24986a28d4
+51	920	7897686132096105	BlurtNote2_autogen/timestamp	c48fe16832611a93
+51	920	7897686132096105	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+51	920	7897686132096105	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+51	920	7897686132096105	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+924	5772	7897686133371042	CMakeFiles/BlurtNote2.dir/main.cpp.obj	813fc24986a28d4
+921	5842	7897686133335983	CMakeFiles/BlurtNote2.dir/BlurtNote2_autogen/mocs_compilation.cpp.obj	d87fc82a196fe9c
+928	5923	7897686133406083	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+31	214	7897686795766326	BlurtNote2_autogen/timestamp	c48fe16832611a93
+31	214	7897686795766326	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+31	214	7897686795766326	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+31	214	7897686795766326	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+214	4668	7897686797597163	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+37	264	7897687093674365	BlurtNote2_autogen/timestamp	c48fe16832611a93
+37	264	7897687093674365	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+37	264	7897687093674365	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+37	264	7897687093674365	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+264	4745	7897687095943564	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+34	249	7897687498433400	BlurtNote2_autogen/timestamp	c48fe16832611a93
+34	249	7897687498433400	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+34	249	7897687498433400	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+34	249	7897687498433400	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+250	4562	7897687500591089	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+38	254	7897689127749912	BlurtNote2_autogen/timestamp	c48fe16832611a93
+38	254	7897689127749912	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+38	254	7897689127749912	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+38	254	7897689127749912	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+255	4823	7897689129924641	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+259	4999	7897689129959708	CMakeFiles/BlurtNote2.dir/themeManager.cpp.obj	143f3f5a84dd94b5
+4999	5319	7897689177366009	BlurtNote2.exe	d3d673be18e55f48
+11	211	7897689695991639	BlurtNote2_autogen/timestamp	c48fe16832611a93
+11	211	7897689695991639	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+11	211	7897689695991639	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+11	211	7897689695991639	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+212	4484	7897689698001574	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+215	4611	7897689698036632	CMakeFiles/BlurtNote2.dir/themeManager.cpp.obj	143f3f5a84dd94b5
+4611	4924	7897689741998688	BlurtNote2.exe	d3d673be18e55f48
+11	701	7897692019158099	BlurtNote2_autogen/timestamp	c48fe16832611a93
+11	701	7897692019158099	BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+11	701	7897692019158099	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/timestamp	c48fe16832611a93
+11	701	7897692019158099	D:/QT projekti/BlurtNote2/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/BlurtNote2_autogen/mocs_compilation.cpp	c48fe16832611a93
+713	5664	7897692020266485	CMakeFiles/BlurtNote2.dir/themeManager.cpp.obj	143f3f5a84dd94b5
+706	5788	7897692020191516	CMakeFiles/BlurtNote2.dir/main.cpp.obj	813fc24986a28d4
+702	5855	7897692020148491	CMakeFiles/BlurtNote2.dir/BlurtNote2_autogen/mocs_compilation.cpp.obj	d87fc82a196fe9c
+709	5976	7897692020221445	CMakeFiles/BlurtNote2.dir/mainwindow.cpp.obj	929a71070a356cbc
+5976	6374	7897692072889658	BlurtNote2.exe	d3d673be18e55f48
