@@ -38,8 +38,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(document, &QTextDocument::modificationChanged,
             this, &MainWindow::updateWindowTitle);
 
+    //Opening the last used file
+    const QString path = lastOpenFile();
+
+    if (!path.isEmpty() && QFileInfo::exists(path)) {
+        docManager->openFile(path);
+        setLastDirectory(path);
+       }
+
     //Sets window title as document name
     updateWindowTitle();
+
 }
 
 MainWindow::~MainWindow()
@@ -162,12 +171,31 @@ void MainWindow::setLastDirectory(const QString& path)
     settings.setValue("lastDir", QFileInfo(path).absolutePath());
 }
 
+//Last open file open and save
+void MainWindow::rememberLastOpenFile()
+{
+    QSettings settings;
+
+    if (docManager->hasFile()) {
+        settings.setValue("lastOpenFile", docManager->filePath());
+    } else {
+        settings.remove("lastOpenFile");
+    }
+}
+
+QString MainWindow::lastOpenFile() const
+{
+    QSettings settings;
+    return settings.value("lastOpenFile").toString();
+}
+
 //Saving dialog when exiting without saving changes
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     //No unsaved changes -> close
     if (!document->isModified()) {
+        rememberLastOpenFile();
         event->accept();
         return;
     }
@@ -190,6 +218,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     //User chose Discard
     if (result == QMessageBox::Discard) {
+        rememberLastOpenFile();
         event->accept();
         return;
     }
@@ -200,6 +229,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         // 5a. File already has a path → save directly
         if (docManager->hasFile()) {
             if (docManager->save()) {
+                rememberLastOpenFile();
                 event->accept();
             } else {
                 event->ignore();
@@ -234,6 +264,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
         if (docManager->saveAs(path)) {
             setLastDirectory(path);
+            rememberLastOpenFile();
             event->accept();
         } else {
             event->ignore();

@@ -33,13 +33,19 @@ private:
     QString getLastDirectory() const;
     void setLastDirectory(const QString& path);
 
+    void rememberLastOpenFile();
+    QString lastOpenFile() const;
+
+    QTextDocument *document;
+    DocumentManager *docManager;
+
 private:
+
     Ui::MainWindow *ui;
 
     void updateMenuChecks();
 
-    QTextDocument *document;
-    DocumentManager *docManager;
+
 
 protected:
      void closeEvent(QCloseEvent *event) override;
