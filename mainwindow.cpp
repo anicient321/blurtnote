@@ -6,6 +6,8 @@
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QSettings>
+#include <QCloseEvent>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -160,3 +162,81 @@ void MainWindow::setLastDirectory(const QString& path)
     settings.setValue("lastDir", QFileInfo(path).absolutePath());
 }
 
+//Saving dialog when exiting without saving changes
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    //No unsaved changes -> close
+    if (!document->isModified()) {
+        event->accept();
+        return;
+    }
+
+    //Ask the user
+    const QMessageBox::StandardButton result =
+        QMessageBox::question(
+            this,
+            tr("Unsaved Changes"),
+            tr("The document has unsaved changes.\nDo you want to save them before closing?"),
+            QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel,
+            QMessageBox::Save
+            );
+
+    //User canceled close
+    if (result == QMessageBox::Cancel) {
+        event->ignore();
+        return;
+    }
+
+    //User chose Discard
+    if (result == QMessageBox::Discard) {
+        event->accept();
+        return;
+    }
+
+    //User chose Save
+    if (result == QMessageBox::Save) {
+
+        // 5a. File already has a path → save directly
+        if (docManager->hasFile()) {
+            if (docManager->save()) {
+                event->accept();
+            } else {
+                event->ignore();
+            }
+            return;
+        }
+
+        //No path yet -> Save As dialog
+        QFileDialog dialog(this);
+        dialog.setAcceptMode(QFileDialog::AcceptSave);
+        dialog.setDirectory(getLastDirectory());
+        dialog.setNameFilters({
+            "Text Files (*.txt)",
+            "Rich Text Files (*.rtf)",
+            "All Files (*)"
+        });
+        dialog.setDefaultSuffix("txt");
+
+        if (!dialog.exec()) {
+            //User canceled Save As -> cancel close
+            event->ignore();
+            return;
+        }
+
+        const QStringList files = dialog.selectedFiles();
+        if (files.isEmpty()) {
+            event->ignore();
+            return;
+        }
+
+        const QString path = files.first();
+
+        if (docManager->saveAs(path)) {
+            setLastDirectory(path);
+            event->accept();
+        } else {
+            event->ignore();
+        }
+    }
+}

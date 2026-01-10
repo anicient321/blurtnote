@@ -40,6 +40,9 @@ private:
 
     QTextDocument *document;
     DocumentManager *docManager;
+
+protected:
+     void closeEvent(QCloseEvent *event) override;
 };
 
 #endif

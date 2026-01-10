@@ -16,10 +16,10 @@ public:
 
     static ThemeManager& instance();
 
-    void applyTheme(Theme theme);          // primijeni temu i sprema u QSettings
-    Theme currentTheme() const;            // vrati trenutno aktivnu temu
-    void loadThemeOnStartup();             // učitaj temu iz QSettings
-    void saveCurrentTheme();               // spremi trenutno aktivnu temu
+    void applyTheme(Theme theme);          // apply theme and save in Qsettings
+    Theme currentTheme() const;            // return current active theme
+    void loadThemeOnStartup();             // load theme from Qsettings
+    void saveCurrentTheme();               // save current active theme
 
 private:
     explicit ThemeManager(QObject *parent = nullptr);

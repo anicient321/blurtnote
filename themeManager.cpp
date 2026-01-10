@@ -11,18 +11,18 @@ ThemeManager& ThemeManager::instance()
 // Konstruktor
 ThemeManager::ThemeManager(QObject *parent)
     : QObject(parent),
-    m_currentTheme(Theme::Light)   // default tema
+    m_currentTheme(Theme::Light)   // default theme
 {
-    loadThemeOnStartup();            // učitaj spremljenu temu i primijeni
+    loadThemeOnStartup();            // load saved theme
 }
 
-// Vrati trenutno aktivnu temu
+// return current active theme
 ThemeManager::Theme ThemeManager::currentTheme() const
 {
     return m_currentTheme;
 }
 
-// Primijeni temu i spremi
+// apply theme and save
 void ThemeManager::applyTheme(Theme theme)
 {
     if (theme == m_currentTheme)
@@ -42,7 +42,7 @@ void ThemeManager::applyTheme(Theme theme)
     saveCurrentTheme();
 }
 
-// Učitaj temu iz QSettings pri startupu
+// Load theme form Qsettigns on startup
 void ThemeManager::loadThemeOnStartup()
 {
     QSettings settings;
@@ -61,14 +61,14 @@ void ThemeManager::loadThemeOnStartup()
     }
 }
 
-// Spremi trenutno aktivnu temu u QSettings
+//save current theme in Qsettings
 void ThemeManager::saveCurrentTheme()
 {
     QSettings settings;
     settings.setValue("theme", static_cast<int>(m_currentTheme));
 }
 
-// Hard-coded light tema
+// Hard-coded light theme
 void ThemeManager::applyLightTheme()
 {
     QString style = R"(
@@ -120,7 +120,7 @@ void ThemeManager::applyLightTheme()
     qApp->setStyleSheet(style);
 }
 
-// Hard-coded dark tema
+// Hard-coded dark theme
 void ThemeManager::applyDarkTheme()
 {
     QString style = R"(
