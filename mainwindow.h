@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include <QTextDocument>
+#include "DocumentManager.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -21,10 +24,22 @@ private slots:
     void on_actionLight_mode_toggled(bool checked);
     void on_actionDark_mode_toggled(bool checked);
 
+    void openFile();
+    void saveFile();
+    void saveFileAs();
+
+private:
+    void updateWindowTitle();
+    QString getLastDirectory() const;
+    void setLastDirectory(const QString& path);
+
 private:
     Ui::MainWindow *ui;
 
     void updateMenuChecks();
+
+    QTextDocument *document;
+    DocumentManager *docManager;
 };
 
 #endif

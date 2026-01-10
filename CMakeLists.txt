@@ -14,6 +14,8 @@ qt_add_executable(BlurtNote2
     themeManager.h
     themeManager.cpp
     resources.qrc
+    documentManager.h
+    documentManager.cpp
 )
 
 qt_add_resources(app_resources resources.qrc)
