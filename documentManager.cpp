@@ -1,4 +1,4 @@
-#include "DocumentManager.h"
+#include "documentManager.h"
 
 #include <QFile>
 #include <QFileInfo>

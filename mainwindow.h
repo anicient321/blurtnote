@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 #include <QTextDocument>
-#include "DocumentManager.h"
+#include "documentManager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

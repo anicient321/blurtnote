@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "thememanager.h"
-#include "DocumentManager.h"
+#include "themeManager.h"
+#include "documentManager.h"
 
 #include <QFileDialog>
 #include <QFileInfo>
@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::saveFile);
     connect(ui->actionSave_as, &QAction::triggered,
             this, &MainWindow::saveFileAs);
+    connect(ui->actionExit, &QAction::triggered,
+            this, &MainWindow::close);
 
     connect(document, &QTextDocument::modificationChanged,
             this, &MainWindow::updateWindowTitle);

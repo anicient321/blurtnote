@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include "thememanager.h"
+#include "themeManager.h"
 
 int main(int argc, char *argv[])
 {
