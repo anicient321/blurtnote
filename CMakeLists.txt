@@ -5,7 +5,7 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
-qt_add_executable(BlurtNote2
+qt_add_executable(blurtnote
     WIN32 MACOSX_BUNDLE
     main.cpp
     mainwindow.cpp
@@ -20,7 +20,7 @@ qt_add_executable(BlurtNote2
 
 qt_add_resources(app_resources resources.qrc)
 
-target_link_libraries(BlurtNote2
+target_link_libraries(blurtnote
     PRIVATE
         Qt::Core
         Qt::Widgets
@@ -28,14 +28,14 @@ target_link_libraries(BlurtNote2
 
 include(GNUInstallDirs)
 
-install(TARGETS BlurtNote2
+install(TARGETS blurtnote
     BUNDLE  DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
 qt_generate_deploy_app_script(
-    TARGET BlurtNote2
+    TARGET blurtnote
     OUTPUT_SCRIPT deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
