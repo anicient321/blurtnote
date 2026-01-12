@@ -38,6 +38,10 @@ chmod +x buildnrun.sh
 ./buildnrun.sh
 ```
 And to install, you can use the (```./install.sh```) script
+```bash
+chmod +x install.sh
+./install.sh
+```
 
 ## Usage
 ```bash
