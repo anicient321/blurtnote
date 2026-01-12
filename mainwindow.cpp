@@ -8,26 +8,28 @@
 #include <QSettings>
 #include <QCloseEvent>
 #include <QMessageBox>
+#include "aboutdialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    
     ui->setupUi(this);
 
     // sets check for currently active theme(when opening app)
     updateMenuChecks();
 
-    // Document creation
+    // document creation
     document = new QTextDocument(this);
 
-    // Attach document to editor
+    // attach document to editor
     ui->textEdit->setDocument(document);
 
-    // Create document manager
+    // create document manager
     docManager = new DocumentManager(document, this);
 
-    // Connect menu actions
+    // connect menu actions
     connect(ui->actionNew_File, &QAction::triggered,
             this, &MainWindow::openFile);
     connect(ui->actionSave, &QAction::triggered,
@@ -36,11 +38,30 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::saveFileAs);
     connect(ui->actionExit, &QAction::triggered,
             this, &MainWindow::close);
+    connect(ui->actionAbout, &QAction::triggered,
+            this, &MainWindow::showAbout);
+
+    // autosave timer and controls
+    m_autosaveTimer = new QTimer(this);
+    m_autosaveTimer->setInterval(500); // 500ms autosave
+    connect(m_autosaveTimer, &QTimer::timeout,
+            this, &MainWindow::onAutosaveTick);
+
+    connect(ui->actionAutosave, &QAction::toggled,
+            this, &MainWindow::toggleAutosave);
+
+    // restore saved autosave state
+    {
+        QSettings settings;
+        bool autosaveEnabled = settings.value("autosaveEnabled", false).toBool();
+        ui->actionAutosave->setChecked(autosaveEnabled);
+        toggleAutosave(autosaveEnabled);
+    }
 
     connect(document, &QTextDocument::modificationChanged,
             this, &MainWindow::updateWindowTitle);
 
-    //Opening the last used file
+    // opening the last used file
     const QString path = lastOpenFile();
 
     if (!path.isEmpty() && QFileInfo::exists(path)) {
@@ -48,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
         setLastDirectory(path);
        }
 
-    //Sets window title as document name
+    // sets window title as document name
     updateWindowTitle();
 
 }
@@ -148,7 +169,7 @@ void MainWindow::saveFileAs()
 //updates window title to name of file
 void MainWindow::updateWindowTitle()
 {
-    QString title = "Qt Notes";
+    QString title = "BlurtNote";
 
     if (docManager->hasFile()) {
         title = QFileInfo(docManager->filePath()).fileName();
@@ -271,5 +292,37 @@ void MainWindow::closeEvent(QCloseEvent *event)
         } else {
             event->ignore();
         }
+    }
+}
+
+void MainWindow::showAbout()
+{
+    AboutDialog dlg(this);
+    dlg.exec();
+}
+
+void MainWindow::toggleAutosave(bool checked)
+{
+    QSettings settings;
+    settings.setValue("autosaveEnabled", checked);
+
+    if (checked) {
+        if (!m_autosaveTimer->isActive())
+            m_autosaveTimer->start();
+    } else {
+        if (m_autosaveTimer->isActive())
+            m_autosaveTimer->stop();
+    }
+}
+
+void MainWindow::onAutosaveTick()
+{
+    // Only autosave when the action is checked and the document needs saving and has a path
+    if (!ui->actionAutosave->isChecked())
+        return;
+
+    if (document->isModified() && docManager->hasFile()) {
+        docManager->save();
+        updateWindowTitle();
     }
 }

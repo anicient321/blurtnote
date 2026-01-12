@@ -1,6 +1,10 @@
+<!DOCTYPE RCC>
 <RCC>
-    <qresource prefix="/themes">
-        <file>dark.qss</file>
-        <file>light.qss</file>
-    </qresource>
+  <qresource prefix="/themes">
+    <file>dark.qss</file>
+    <file>light.qss</file>
+  </qresource>
+  <qresource prefix="/icons">
+    <file>icons/notes.svg</file>
+  </qresource>
 </RCC>

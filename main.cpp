@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QIcon>
 #include "themeManager.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setWindowIcon(QIcon("icons/notes.svg"));
 
     QCoreApplication::setOrganizationName("MyCompany");
     QCoreApplication::setApplicationName("MyQtApp");

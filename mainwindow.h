@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include <QTextDocument>
+#include <QTimer>
 #include "documentManager.h"
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +28,9 @@ private slots:
     void openFile();
     void saveFile();
     void saveFileAs();
+    void showAbout();
+    void toggleAutosave(bool checked);
+    void onAutosaveTick();
 
 private:
     void updateWindowTitle();
@@ -40,6 +44,7 @@ private:
     DocumentManager *docManager;
 
 private:
+    QTimer *m_autosaveTimer;
 
     Ui::MainWindow *ui;
 
