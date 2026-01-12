@@ -29,12 +29,15 @@ git clone https://github.com/anicient321/blurtnote.git
 cd blurtnote
 cmake -B build -S . -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu
 cmake --build build
-cd build && ./blurtnote
+mkdir build
+cd build
+./blurtnote
 ```
 
 ## Usage
+Note; the built binary will be located in the "build" folder
 ```bash
-blurtnote
+./blurtnote
 ```
 
 ## License
