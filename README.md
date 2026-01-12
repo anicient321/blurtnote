@@ -27,11 +27,16 @@ install.bat
 ```bash
 git clone https://github.com/anicient321/blurtnote.git
 cd blurtnote
+mkdir build
 cmake -B build -S . -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu
 cmake --build build
-mkdir build
 cd build
 ./blurtnote
+```
+You can use the convenience script in the root directory (```./buildnrun.sh```) to compile & run BlurtNote as needed
+```bash
+chmod +x buildnrun.sh
+./buildnrun.sh
 ```
 
 ## Usage
