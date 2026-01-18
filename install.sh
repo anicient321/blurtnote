@@ -8,6 +8,7 @@ DESKTOPDIR="$HOME/.local/share/applications"
 NOTESHASH="173d6c65927459e2d11ddb9ad1b3d245495f861e918a7a4949442ffdbd5971c4"
 
 echo -e "blurtnote installer\n\n+ installing blurtnote for user $USER"
+pkill -f blurtnote
 echo -e '+ need SU rights to install...'
 sudo -v
 
