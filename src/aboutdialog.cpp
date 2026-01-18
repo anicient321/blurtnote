@@ -16,9 +16,10 @@ AboutDialog::AboutDialog(QWidget *parent)
     link->setTextInteractionFlags(Qt::TextBrowserInteraction);
     link->setOpenExternalLinks(true);
 
-    QLabel *finals = new QLabel(tr("---Finals work---"));
+    QLabel *finals = new QLabel(tr("Finals work"));
     auto *ime1 = new QLabel(tr("Edi Wolf (anicient321)"));
     auto *ime2 = new QLabel(tr("Filip Avelini (filipavelini)"));
+    auto *versionstuff = new QLabel(tr("VERSION V1.1.0"));
 
     auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok);
     connect(buttons, &QDialogButtonBox::accepted, this, &AboutDialog::accept);
@@ -28,6 +29,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     layout->addWidget(finals);
     layout->addWidget(ime1);
     layout->addWidget(ime2);
+    layout->addWidget(versionstuff);
     layout->addWidget(buttons);
     setLayout(layout);
 }
