@@ -14,13 +14,17 @@ BlurtNote is a minimal note-taking app designed for speed. Capture fleeting thou
 
 ## Compilation & installation
 You can also use the pre-build binaries for both platforms from the Releases tab.
+If you are building anything Windows related - make sure you have (```MinGW-w64```) installed!
 
 ### Windows
 ```bash
 git clone https://github.com/anicient321/blurtnote.git
 cd blurtnote
-build.bat
-install.bat
+mkdir build
+cmake -B build -S . -G "MinGW Makefiles"
+cmake --build build
+cd build
+blurtnote.exe
 ```
 
 ### Linux
@@ -30,10 +34,12 @@ cd blurtnote
 mkdir build
 cmake -B build -S . -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu
 cmake --build build
-cd build && ./blurtnote
+cd build
+./blurtnote
 ```
 You can use the convenience script in the root directory (```./buildnrun.sh```) to compile & run BlurtNote as needed
-NOTE: buildnrun.sh and install.sh also download dependencies
+
+NOTE: buildnrun.sh and install.sh also download dependencies, except MinGW-w64, as the script does not yet support building Windows binaries
 ```bash
 chmod +x buildnrun.sh
 ./buildnrun.sh
@@ -47,11 +53,15 @@ curl -fsSL https://raw.githubusercontent.com/anicient321/blurtnote/refs/heads/v1
 chmod +x install.sh
 ./install.sh
 ```
+And you can uninstall via the (```./uninstall.sh```) script
 
 ## Usage
 ```bash
 blurtnote
 ```
+
+## Basic troubleshooting
+
 
 ## License
 GPL2.0, refer to LICENSES\GPL2.0
