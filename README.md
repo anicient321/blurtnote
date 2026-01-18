@@ -10,7 +10,17 @@ The project focuses on building a minimal and functional text editor with a grap
 BlurtNote is a minimal note-taking app designed for speed. Capture fleeting thoughts without friction.
 
 ## Features
-- Fast thought capture
+- Quick & painless installation
+- Low memory usage (~85mb)
+- Stable, made with QT & C++
+- Quick tabbing features
+- AutoSave feature
+
+## Quick install
+Use the oneliner (distro agnostic) to download and install blurtnote
+```bash
+curl -fsSL https://raw.githubusercontent.com/anicient321/blurtnote/refs/heads/v1.1.0/install.sh | bash
+```
 
 ## Compilation & installation
 You can also use the pre-build binaries for both platforms from the Releases tab.
@@ -45,10 +55,6 @@ chmod +x buildnrun.sh
 ./buildnrun.sh
 ```
 Alternatively, to install without building, you can use the (```./install.sh```) script
-or, use the oneliner
-```bash
-curl -fsSL https://raw.githubusercontent.com/anicient321/blurtnote/refs/heads/v1.1.0/install.sh | bash
-```
 ```bash
 chmod +x install.sh
 ./install.sh
