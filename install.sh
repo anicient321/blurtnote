@@ -82,6 +82,7 @@ sudo rm -rf /opt/blurtnote
 sudo cp "$TMPDIR/blurtnote-x86_64" /opt/blurtnote
 sudo chown $USER:$USER /opt/blurtnote
 sudo chmod 755 /opt/blurtnote
+sudo ln -sf /opt/blurtnote /usr/local/bin
 
 #it really does take a while... a WHILE.
 #echo -e '+ updating system icon and desktop caches...\nthis might take a while'
