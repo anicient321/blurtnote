@@ -25,7 +25,7 @@ elif command -v zypper >/dev/null 2>&1; then
 elif command -v apk >/dev/null 2>&1; then
     sudo apk add --no-cache curl qt6-qtbase >/dev/null 2>>"$TMPDIR/err.log" || echo "apk install failed, see $TMPDIR/err.log"
 else
-    echo "- something went wrong :( see $TMPDIR/err.log for details"
+    echo "- could not install dependencies\n- likely because the system is incompatible :( see $TMPDIR/err.log for details"
     exit 1
 fi
 
@@ -34,12 +34,17 @@ if [ -f build/blurtnote ]; then
     cp blurtnote blurtnote-x86_64
     mv blurtnote-x86_64 $TMPDIR
 else
-    if command -v curl >/dev/null 2>&1; then
-        curl -fsSL -o "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
-    elif command -v wget >/dev/null 2>&1; then
-        wget -q -O "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
+    if ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
+        if command -v curl >/dev/null 2>&1; then
+            curl -fsSL -o "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
+        elif command -v wget >/dev/null 2>&1; then
+            wget -q -O "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
+        else
+            echo "ERR: curl or wget required"
+            exit 1
+        fi
     else
-        echo "ERR: curl or wget required"
+        echo "- an internet connection is required to download assets"
         exit 1
     fi
 fi
@@ -88,6 +93,12 @@ sudo cp "$TMPDIR/blurtnote-x86_64" /opt/blurtnote
 sudo chown $USER:$USER /opt/blurtnote
 sudo chmod 755 /opt/blurtnote
 sudo ln -sf /opt/blurtnote /usr/local/bin
+
+if [[ ! -s "$TMPDIR/err.log" ]] || [[ -z $(grep -o '[^[:space:]]' "$TMPDIR/err.log") ]]; then
+    rm -rfv "$TMPDIR/err.log"
+else
+    echo -e "- installation completed, but something went wrong :(\nsee $TMPDIR/err.log for details"
+fi
 
 #it really does take a while... a WHILE.
 #echo -e '+ updating system icon and desktop caches...\nthis might take a while'
