@@ -30,13 +30,18 @@ else
 fi
 
 trap 'rc=$?; rm -rf "$TMPDIR"; exit $rc' EXIT
-if command -v curl >/dev/null 2>&1; then
-    curl -fsSL -o "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
-elif command -v wget >/dev/null 2>&1; then
-    wget -q -O "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
+if [ -f build/blurtnote ]; then
+    cp blurtnote blurtnote-x86_64
+    mv blurtnote-x86_64 $TMPDIR
 else
-    echo "ERR: curl or wget required"
-    exit 1
+    if command -v curl >/dev/null 2>&1; then
+        curl -fsSL -o "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
+    elif command -v wget >/dev/null 2>&1; then
+        wget -q -O "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
+    else
+        echo "ERR: curl or wget required"
+        exit 1
+    fi
 fi
 
 if [ -f icons/notes.svg ] && \
