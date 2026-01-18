@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 DERP="anicient321/blurtnote"
-BRANCH="v1.1.0"
+BRANCH="1.1.0"
 TMPDIR=$(mktemp -d)
 ICONDIR="$HOME/.local/share/icons"
 DESKTOPDIR="$HOME/.local/share/applications"
@@ -9,18 +9,31 @@ NOTESHASH="173d6c65927459e2d11ddb9ad1b3d245495f861e918a7a4949442ffdbd5971c4"
 
 echo -e "blurtnote installer\n\n+ installing blurtnote for user $USER"
 
-echo -e "+ installing dependencies..."
-(command -v apt >/dev/null 2>&1 && sudo apt update -qq >/dev/null 2>&1 && sudo apt install -yqq curl libqt6core6 libqt6gui6 libqt6widgets6 libqt6network6 >/dev/null 2>&1 || \
- command -v dnf >/dev/null 2>&1 && sudo dnf install -y curl qt6-qtbase >/dev/null 2>&1 || \
- command -v pacman >/dev/null 2>&1 && sudo pacman -S --noconfirm curl qt6-base >/dev/null 2>&1 || \
- command -v zypper >/dev/null 2>&1 && sudo zypper install -y curl libQt6Core6 libQt6Gui6 libQt6Widgets6 >/dev/null 2>&1 || \
- command -v apk >/dev/null 2>&1 && sudo apk add curl qt6-qtbase >/dev/null 2>&1)
+echo -e '+ need SU rights to install...\n'
+sudo -v
+
+echo "+ installing dependencies..."
+if command -v apt >/dev/null 2>&1; then
+    sudo apt update -yqq >/dev/null 2>>"$TMPDIR/err.log" || echo "apt update failed, see $TMPDIR/err.log"
+    sudo apt install -yqq curl libqt6core6 libqt6gui6 libqt6widgets6 libqt6network6 >/dev/null 2>>"$TMPDIR/err.log" || echo "apt install failed, see $TMPDIR/err.log"
+elif command -v dnf >/dev/null 2>&1; then
+    sudo dnf install -y curl qt6-qtbase >/dev/null 2>>"$TMPDIR/err.log" || echo "dnf install failed, see $TMPDIR/err.log"
+elif command -v pacman >/dev/null 2>&1; then
+    sudo pacman -Syu --noconfirm curl qt6-base >/dev/null 2>>"$TMPDIR/err.log" || echo "pacman install failed, see $TMPDIR/err.log"
+elif command -v zypper >/dev/null 2>&1; then
+    sudo zypper install -y curl libQt6Core6 libQt6Gui6 libQt6Widgets6 >/dev/null 2>>"$TMPDIR/err.log" || echo "zypper install failed, see $TMPDIR/err.log"
+elif command -v apk >/dev/null 2>&1; then
+    sudo apk add --no-cache curl qt6-qtbase >/dev/null 2>>"$TMPDIR/err.log" || echo "apk install failed, see $TMPDIR/err.log"
+else
+    echo "- something went wrong :( see $TMPDIR/err.log for details"
+    exit 1
+fi
 
 trap 'rc=$?; rm -rf "$TMPDIR"; exit $rc' EXIT
 if command -v curl >/dev/null 2>&1; then
-    curl -fsSL -o "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-v$BRANCH/blurtnote-x86_64
+    curl -fsSL -o "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
 elif command -v wget >/dev/null 2>&1; then
-    wget -q -O "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-v$BRANCH/blurtnote-x86_64
+    wget -q -O "$TMPDIR/blurtnote-x86_64" https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64
 else
     echo "ERR: curl or wget required"
     exit 1
@@ -31,9 +44,9 @@ if [ -f icons/notes.svg ] && \
     :
 else
     if command -v curl >/dev/null 2>&1; then
-        curl -fsSL -o "$TMPDIR/notes.svg" "https://raw.githubusercontent.com/$DERP/refs/heads/$BRANCH/src/icons/notes.svg"
+        curl -fsSL -o "$TMPDIR/notes.svg" "https://raw.githubusercontent.com/$DERP/refs/heads/v$BRANCH/src/icons/notes.svg"
     elif command -v wget >/dev/null 2>&1; then
-        wget -q -O "$TMPDIR/notes.svg" "https://raw.githubusercontent.com/$DERP/refs/heads/$BRANCH/src/icons/notes.svg"
+        wget -q -O "$TMPDIR/notes.svg" "https://raw.githubusercontent.com/$DERP/refs/heads/v$BRANCH/src/icons/notes.svg"
     else
         echo "ERR: curl or wget required"
         exit 1
@@ -65,8 +78,6 @@ EOF
 chmod +x "$TMPDIR/blurtnote.desktop"
 cp "$TMPDIR/blurtnote.desktop" "$DESKTOPDIR/"
 
-echo -e '+ need SU rights to install...\n'
-sudo -v
 sudo rm -rf /opt/blurtnote
 sudo cp "$TMPDIR/blurtnote-x86_64" /opt/blurtnote
 sudo chown $USER:$USER /opt/blurtnote
