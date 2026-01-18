@@ -1,4 +1,6 @@
 #!/bin/bash
+echo -e "blurtnote builder\n"
+
 if [ "$EUID" -eq 0 ]; then
   echo "ERR: do NOT run or build blurtnote as rooot"
   exit 1
