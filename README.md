@@ -61,7 +61,11 @@ blurtnote
 ```
 
 ## Basic troubleshooting
-
+If the scripts fail to launch and return permission denied errors
+```bash
+chmod +x *.sh
+```
+If you encounter any compilation errors, make sure you have downloaded all dependencies (using either the (```./install.sh```) script, or the (```./buildnrun.sh```) script.
 
 ## License
 GPL2.0, refer to LICENSES\GPL2.0
