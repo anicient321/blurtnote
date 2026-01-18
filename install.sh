@@ -8,11 +8,10 @@ DESKTOPDIR="$HOME/.local/share/applications"
 NOTESHASH="173d6c65927459e2d11ddb9ad1b3d245495f861e918a7a4949442ffdbd5971c4"
 
 echo -e "blurtnote installer\n\n+ installing blurtnote for user $USER"
-
-echo -e '+ need SU rights to install...\n'
+echo -e '+ need SU rights to install...'
 sudo -v
-echo "+ installing dependencies..."
 
+echo "+ installing dependencies..."
 install_deps() {
     if command -v apt >/dev/null 2>&1; then
         sudo apt update -yqq >/dev/null 2>>"$TMPDIR/err.log" || echo "apt update failed, see $TMPDIR/err.log"
@@ -51,20 +50,29 @@ check_internet() {
 }
 
 if [ -f build/blurtnote ]; then
-    cp blurtnote blurtnote-x86_64
+    cp build/blurtnote blurtnote-x86_64
     mv blurtnote-x86_64 $TMPDIR
 else
     check_internet || { echo "- an internet connection is required to download assets"; exit 1; }
     download "https://github.com/$DERP/releases/download/release-$BRANCH/blurtnote-x86_64" "$TMPDIR/blurtnote-x86_64"
 fi
 
-if [ ! -f icons/notes.svg ] || [ "$(sha256sum icons/notes.svg | awk '{print $1}')" != "$NOTESHASH" ]; then
+if [ -f icons/notes.svg ] && [ "$(sha256sum icons/notes.svg | awk '{print $1}')" = "$NOTESHASH" ]; then
+    :
+else
     check_internet || { echo "- an internet connection is required to download assets"; exit 1; }
     download "https://raw.githubusercontent.com/$DERP/refs/heads/v$BRANCH/src/icons/notes.svg" "$TMPDIR/notes.svg"
 fi
 
 echo -e '+ copying blurtnote assets...'
-cp "${ICONDIR}/notes.svg" "$ICONDIR/" 2>/dev/null || cp "$TMPDIR/notes.svg" "$ICONDIR/" 2>/dev/null || { echo "ERR: notes.svg is somehow still missing"; exit 1; }
+if [ -f icons/notes.svg ]; then
+    cp "icons/notes.svg" "$ICONDIR/"
+elif [ -f "$TMPDIR/notes.svg" ]; then
+    cp "$TMPDIR/notes.svg" "$ICONDIR/"
+else
+    echo "" >>$TMPDIR/err.log
+    echo "ERR: notes.svg is somehow still missing" >>$TMPDIR/err.log
+fi
 
 cat > "$TMPDIR/blurtnote.desktop" <<EOF
 [Desktop Entry]
@@ -79,6 +87,7 @@ EOF
 
 chmod +x "$TMPDIR/blurtnote.desktop"
 cp "$TMPDIR/blurtnote.desktop" "$DESKTOPDIR/"
+
 sudo rm -rf /opt/blurtnote
 sudo cp "$TMPDIR/blurtnote-x86_64" /opt/blurtnote
 sudo chown $USER:$USER /opt/blurtnote
@@ -88,12 +97,13 @@ sudo ln -sf /opt/blurtnote /usr/local/bin
 if [[ ! -s "$TMPDIR/err.log" ]] || [[ -z $(grep -o '[^[:space:]]' "$TMPDIR/err.log") ]]; then
     rm -rf "$TMPDIR/err.log"
 else
-    echo -e "- installation completed, but something went wrong :(\nsee $TMPDIR/err.log for details"
+    mv "$TMPDIR/err.log" $HOME/blurtnote-install-err.log
+    echo -e "- installation completed, but something went wrong :(\nsee $HOME/blurtnote-install-err.log for details"
 fi
 
-# it really does take a WHILE.
-#echo -e '+ updating system icon and desktop caches...\nthis might take a while'
-#command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database "$DESKTOPDIR" >/dev/null 2>&1 || true
-#command -v gtk-update-icon-cache >/dev/null 2>&1 && gtk-update-icon-cache -f -t "$(dirname "$ICONDIR")" >/dev/null 2>&1 || true
+# takes so long, genuinely not worth the hassle
+# echo -e '+ updating system icon and desktop caches...\nthis might take a while'
+# command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database "$DESKTOPDIR" >/dev/null 2>&1 || true
+# command -v gtk-update-icon-cache >/dev/null 2>&1 && gtk-update-icon-cache -f -t "$(dirname "$ICONDIR")" >/dev/null 2>&1 || true
 
 echo -e '+++ installed blurtnote!'
