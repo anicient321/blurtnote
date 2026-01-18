@@ -86,7 +86,7 @@ sudo chmod 755 /opt/blurtnote
 sudo ln -sf /opt/blurtnote /usr/local/bin
 
 if [[ ! -s "$TMPDIR/err.log" ]] || [[ -z $(grep -o '[^[:space:]]' "$TMPDIR/err.log") ]]; then
-    rm -rfv "$TMPDIR/err.log"
+    rm -rf "$TMPDIR/err.log"
 else
     echo -e "- installation completed, but something went wrong :(\nsee $TMPDIR/err.log for details"
 fi
