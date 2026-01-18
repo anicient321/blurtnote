@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=BlurtNote
-Exec=/home/astr64/blurtnote/build/blurtnote %U
-Icon=/home/astr64/blurtnote/icons/notes.svg
-Type=Application
-Categories=Utility;

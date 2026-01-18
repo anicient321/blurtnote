@@ -19,6 +19,7 @@ public:
     bool openFile(const QString& path);
     bool save();
     bool saveAs(const QString& path);
+    void createNew();
 
     bool hasFile() const;
     QString filePath() const;

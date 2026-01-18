@@ -1,8 +1,8 @@
 <!DOCTYPE RCC>
 <RCC>
-  <qresource prefix="/themes">
-    <file>dark.qss</file>
-    <file>light.qss</file>
+  <qresource prefix="/">
+    <file>themes/dark.qss</file>
+    <file>themes/light.qss</file>
   </qresource>
   <qresource prefix="/icons">
     <file>icons/notes.svg</file>

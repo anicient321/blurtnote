@@ -90,3 +90,11 @@ bool DocumentManager::saveAs(const QString& path)
 
     return save();
 }
+
+void DocumentManager::createNew()
+{
+    m_document->clear();
+    m_filePath.clear();
+    m_format = DocumentFormat::PlainText;
+    m_document->setModified(false);
+}

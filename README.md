@@ -1,6 +1,6 @@
 # BlurtNote
 **BlurtNote** is a quick-capture application for dumping thoughts instantly.
-![BlurtNote Banner](./image.png)
+![BlurtNote Banner](./assets/image.png)
 
 It's cross-platform and developed in **C++ using the Qt framework**. The application is designed to run on both **Linux and Windows** operating systems.
 
@@ -33,11 +33,16 @@ cmake --build build
 cd build && ./blurtnote
 ```
 You can use the convenience script in the root directory (```./buildnrun.sh```) to compile & run BlurtNote as needed
+NOTE: buildnrun.sh and install.sh also download dependencies
 ```bash
 chmod +x buildnrun.sh
 ./buildnrun.sh
 ```
-And to install, you can use the (```./install.sh```) script
+Alternatively, to install without building, you can use the (```./install.sh```) script
+or, use the oneliner
+```bash
+curl -fsSL https://raw.githubusercontent.com/anicient321/blurtnote/refs/heads/v1.1.0/install.sh | bash
+```
 ```bash
 chmod +x install.sh
 ./install.sh

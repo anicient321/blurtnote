@@ -1,0 +1,57 @@
+QMainWindow {
+    background-color: #121212;
+}
+QWidget {
+    color: #e0e0e0;
+    background-color: #121212;
+    font-family: "Segoe UI";
+    font-size: 10pt;
+}
+QMenuBar {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+QMenuBar::item:selected {
+    background-color: #2a2a2a;
+}
+QMenu {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #2c2c2c;
+}
+QMenu::item:selected {
+    background-color: #333333;
+}
+QPushButton {
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    padding: 6px;
+}
+QPushButton:hover {
+    background-color: #333333;
+}
+QPushButton:pressed {
+    background-color: #3d3d3d;
+}
+QLineEdit {
+    background-color: #1e1e1e;
+    border: 1px solid #3a3a3a;
+    padding: 4px;
+    selection-background-color: #0078d7;
+}
+QTextEdit {
+    background-color: #1e1e1e;
+    border: 1px solid #3a3a3a;
+    selection-background-color: #0078d7;
+}
+QScrollBar:vertical {
+    background: #1e1e1e;
+    width: 10px;
+}
+QScrollBar::handle:vertical {
+    background: #3a3a3a;
+    min-height: 20px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #4a4a4a;
+}
