@@ -4,11 +4,9 @@ if [ "$EUID" -eq 0 ]; then
   exit 1
 fi
 
-pkill -fe blurtnote
-rm -rfv build
+pkill -f blurtnote
+rm -rf build
 mkdir build
-
-#!/bin/bash
 
 echo -e "+ installing build dependencies..."
 if command -v apt >/dev/null 2>&1; then
@@ -33,3 +31,9 @@ cmake --build build
 
 echo -e '\n+ done building, executing\n'
 ./build/blurtnote & disown
+
+if [[ ! -s "err.log" ]] || [[ -z $(grep -o '[^[:space:]]' "err.log") ]]; then
+    rm -rf "err.log"
+else
+    echo -e "- build completed, but some errors occurred :(\nsee $PWD/err.log for details"
+fi
